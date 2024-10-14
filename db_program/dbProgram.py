@@ -1,5 +1,4 @@
 import pymysql
-
 #SQL statements:
 sql_select_all ="SELECT * FROM USERINFO"
 sql_select_by_id = "SELECT * FROM USERINFO WHERE id = %s"
@@ -46,9 +45,30 @@ def get_user_by_id(id):
         cursur.close()
         connection.close()
 
-# users = get_all_users()
-# for user in users:
-#     print(f"{user[1]} with email: {user[3]} is identified as {user[0]}")
 
-user = get_user_by_id(1)
-print(user)
+def add_user(name, pwd, email):
+    connection = pymysql.connect(**db_config)
+    cursor = connection.cursor()
+    try:
+        cursor.execute(sql_insert, (name, pwd, email))
+        connection.commit()
+    except Exception as ex:
+        print("Failed to insert: ", ex)
+    finally:
+        cursor.close()
+        connection.close()
+
+try:
+    #todo: take inputs from the user and pass it as args to the add_user func
+    add_user("Phaniraj", "test@123", "phanirajbn@gmail.com")
+    users = get_all_users()
+except:
+    print("Error occured: ")
+else:
+    for user in users:
+        print(f"{user[1]} with email: {user[3]} is identified as {user[0]}")
+finally:
+    print("End of the Application")
+
+# user = get_user_by_id(1)
+# print(user)
