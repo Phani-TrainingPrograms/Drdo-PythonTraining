@@ -32,7 +32,23 @@ def get_all_users():
         cursur.close()
         connection.close()
 
+def get_user_by_id(id):
+    connection = pymysql.connect(**db_config)
+    cursur = connection.cursor()
+    try:
+        cursur.execute(sql_select_by_id, id)
+        user = cursur.fetchone()
+    except Exception as ex:
+        print("Exception while fetching single record: ", ex)
+    else:
+        return user
+    finally:
+        cursur.close()
+        connection.close()
 
-users = get_all_users()
-for user in users:
-    print(f"{user[1]} with email: {user[3]} is identified as {user[0]}")
+# users = get_all_users()
+# for user in users:
+#     print(f"{user[1]} with email: {user[3]} is identified as {user[0]}")
+
+user = get_user_by_id(1)
+print(user)
