@@ -11,3 +11,7 @@ create table userinfo
 );
 
 insert into userinfo(username, password, emailaddress) values('Suresh','test@123', 'suresh@gmail.com');
+
+drop table userinfo;  -- used to delete the table from the database permanently
+
+drop database sampledb; -- delete the database, U need not delete the table and then the database. 
