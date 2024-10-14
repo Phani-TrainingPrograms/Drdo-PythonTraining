@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+   <link rel="stylesheet" href="{{ url_for('static' , filename = 'main.css') }}">
 </head>
 <body>
   <h1>Welcome to user registration form</h1>
@@ -27,7 +28,6 @@
         <button type="button" onclick="window.location.href='{{ url_for('index') }}'">Back to Index</button>
       </p>
     </form>
-
   </div>
 </body>
 </html>
