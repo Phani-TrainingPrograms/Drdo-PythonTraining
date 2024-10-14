@@ -3,12 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .menu{
+            color: bisque;
+            background-color: brown;
+            padding : 15px;
+            margin: 5px;
+        }
+        a{
+            color : blue;
+            padding : 5px;
+            margin : 5px;
+            background-color : gold
+        }
+    </style>
 </head>
 <body>
     <h1>Hello world from Python</h1>
+    <div class="menu">
+        <a href="register">New User!</a>
+    </div>
     <hr>
     <p>Welcome {{admin.name}}</p>
     <p>Your residence: {{admin.address}}</p>
     <p>Your Email Address:  {{admin.email}}</p>
+
 </body>
 </html>

@@ -23,7 +23,7 @@ def register():
         print(f"User: {user_name}. Email : {user_email}, Password: {user_pwd}")
         return redirect(url_for('success', name = user_name))
     else:
-        render_template('register.html')
+        return render_template('register.html')
 
 @app.route("/success/<name>")
 def success(name):
