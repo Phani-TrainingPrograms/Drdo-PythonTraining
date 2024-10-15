@@ -23,8 +23,9 @@ def register():
         user_name = request.form['username']
         user_pwd = request.form['password']
         user_email = request.form['email']
-        print(f"User: {user_name}. Email : {user_email}, Password: {user_pwd}")
-        return redirect(url_for('success', name = user_name))
+        db = MySqlDatabase()
+        db.add_user(user_name, user_pwd, user_email)
+        return redirect(url_for('allusers'))
     else:
         return render_template('register.html')
 
@@ -38,7 +39,6 @@ def allusers():
     users = db.get_all_users()
     year = datetime.datetime.today().year
     return render_template("allusers.html", year = year, users = users)
-
 
 @app.route("/details")
 def user_details():
@@ -59,7 +59,7 @@ def update_user():
     db = MySqlDatabase()
     print(f"{user_id}, {name}, {password}, {email}")
     db.update_user(user_id, name, password, email)
-    return redirect(url_for('index'))
+    return redirect(url_for('allusers'))
 
 if __name__ == '__main__':
     app.run(debug=True)

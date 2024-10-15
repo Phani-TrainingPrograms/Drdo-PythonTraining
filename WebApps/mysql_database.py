@@ -51,9 +51,8 @@ class MySqlDatabase:
         try:
             self.connect()
             with self.connection.cursor() as cursor:
-                query = (f"INSERT INTO USERINFO (username, password, emailaddress) values (%%s, "
-                         f"%s, %s)")
-                cursor.execute(query, {name, pwd, email})
+                query = (f"INSERT INTO USERINFO (username, password, emailaddress) values (%s, %s, %s)")
+                cursor.execute(query, (name, pwd, email))
                 self.connection.commit()
         except Exception as ex:
             print("Exception while inserting: ", ex)
