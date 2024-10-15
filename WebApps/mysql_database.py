@@ -60,3 +60,15 @@ class MySqlDatabase:
         finally:
             self.disconnect()
 
+    def update_user(self, id, name, pwd, email):
+        try:
+            self.connect();
+            with self.connection.cursor() as cursur:
+                query = (f"UPDATE USERINFO SET username = %s, password = %s , emailaddress = %s "
+                         f"where id = %s")
+                cursur.execute(query, (name, pwd, email, id))
+                cursur.commit()
+        except Exception as ex:
+            print(f"Exception: {ex}")
+        finally:
+            self.disconnect()

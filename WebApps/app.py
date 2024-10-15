@@ -50,5 +50,16 @@ def user_details():
     else:
         return 'User not found', 404
 
+@app.route("/update_user", methods = ['POST'])
+def update_user():
+    user_id = int(request.form['user_id'])
+    name = request.form['username']
+    password = request.form['password']
+    email = request.form['email']
+    db = MySqlDatabase()
+    print(f"{user_id}, {name}, {password}, {email}")
+    db.update_user(user_id, name, password, email)
+    return redirect(url_for('index'))
+
 if __name__ == '__main__':
     app.run(debug=True)
