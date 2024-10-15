@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+   <link rel="stylesheet" href="{{ url_for('static' , filename = 'bootstrap.min.css') }}">
+</head>
+<body>
+  <h1 class="h1 bg-primary m-3">Welcome to Details Page!</h1>
+  <div class="m-4">
+    <h3>Details</h3>
+    <p>User Id: <input type="text" disabled value="{{ user[0] }}" class="form-control" name="id"/> </p>
+    <p>User Name: <input type="text" value="{{ user[1] }}" class="form-control" name="username"/> </p>
+    <p>User Password: <input type="password" class="form-control" value ="{{ user[2] }}" name="password"/> </p>
+    <p>User Email: <input type="email" class="form-control" name="email"  value = "{{ user[3] }}" /> </p>
+    <p>
+      <button class="btn btn-warning">Save Changes</button>
+      <a class="btn btn-secondary" href="/">Cancel</a>
+    </p>
+  </div>
+</body>
+</html>

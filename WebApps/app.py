@@ -39,5 +39,16 @@ def allusers():
     year = datetime.datetime.today().year
     return render_template("allusers.html", year = year, users = users)
 
+
+@app.route("/details")
+def user_details():
+    user_id = request.args.get('id')
+    db = MySqlDatabase()
+    user = db.get_user_by_id(user_id)
+    if user:
+        return render_template('details.html', user = user)
+    else:
+        return 'User not found', 404
+
 if __name__ == '__main__':
     app.run(debug=True)

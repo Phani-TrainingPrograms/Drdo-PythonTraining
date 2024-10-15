@@ -33,6 +33,20 @@ class MySqlDatabase:
         finally:
                 self.disconnect()
 
+    def get_user_by_id(self, id):
+        try:
+            self.connect()
+            with self.connection.cursor() as cursor:
+                query = "SELECT * FROM USERINFO WHERE id = %s"
+                cursor.execute(query, id)
+                selected_user = cursor.fetchone()
+        except Exception as ex:
+            print("Exception : ", ex)
+        else:
+                return selected_user
+        finally:
+                self.disconnect()
+
     def add_user(self, name, pwd, email):
         try:
             self.connect()
