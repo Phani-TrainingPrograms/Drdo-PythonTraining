@@ -1,4 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
+import datetime
+
+from mysql_database import MySqlDatabase
 
 app = Flask(__name__)
 
@@ -29,6 +32,12 @@ def register():
 def success(name):
     return render_template('success.html', name = name)
 
+@app.route("/allusers")
+def allusers():
+    db = MySqlDatabase()
+    users = db.get_all_users()
+    year = datetime.datetime.today().year
+    return render_template("allusers.html", year = year, users = users)
 
 if __name__ == '__main__':
     app.run(debug=True)

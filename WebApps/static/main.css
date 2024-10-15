@@ -1,6 +1,8 @@
 body{
     background-color: bisque;
-    color: brown
+    color: brown;
+     display: flex;
+     flex-direction: column;
 }
 div{
     padding: 3px;
@@ -19,4 +21,14 @@ a{
     padding : 5px;
     margin : 5px;
     background-color : gold
+}
+
+.content {
+  flex: 1 0 auto;
+}
+footer{
+    text-align : center;
+    font-style : italic;
+    font-size :0.8em;
+    flex-shrink: 0;
 }
