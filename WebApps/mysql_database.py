@@ -54,7 +54,7 @@ class MySqlDatabase:
                 query = (f"INSERT INTO USERINFO (username, password, emailaddress) values (%%s, "
                          f"%s, %s)")
                 cursor.execute(query, {name, pwd, email})
-                cursor.commit()
+                self.connection.commit()
         except Exception as ex:
             print("Exception while inserting: ", ex)
         finally:
@@ -67,7 +67,7 @@ class MySqlDatabase:
                 query = (f"UPDATE USERINFO SET username = %s, password = %s , emailaddress = %s "
                          f"where id = %s")
                 cursur.execute(query, (name, pwd, email, id))
-                cursur.commit()
+                self.connection.commit()
         except Exception as ex:
             print(f"Exception: {ex}")
         finally:
