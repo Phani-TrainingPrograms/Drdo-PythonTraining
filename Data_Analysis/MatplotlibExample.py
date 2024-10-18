@@ -57,3 +57,32 @@ plt.legend()
 
 plt.show()
 
+##############################using StackPlot##################################
+# Data for the days of the week
+days = [1, 2, 3, 4, 5, 6, 7]  # Represents Monday to Sunday
+
+# Activities data (hours spent per day)
+sleeping = [7, 6, 8, 7, 7, 7, 8]  # Hours spent sleeping
+working = [8, 8, 8, 8, 6, 0, 0]   # Hours spent working
+eating = [2, 2, 2, 2, 2, 3, 3]    # Hours spent eating
+exercise = [1, 1, 1, 1, 2, 2, 2]  # Hours spent exercising
+leisure = [6, 7, 5, 6, 7, 12, 11] # Hours spent on leisure
+
+# Stack plot
+plt.figure(figsize=(10, 6))
+
+# Create the stack plot
+plt.stackplot(days, sleeping, working, eating, exercise, leisure,
+              labels=['Sleeping', 'Working', 'Eating', 'Exercise', 'Leisure'],
+              colors=['lightblue', 'lightgreen', 'lightcoral', 'yellow', 'purple'])
+
+# Add labels and title
+plt.xlabel('Days of the Week')
+plt.ylabel('Hours Spent')
+plt.title('Daily Activity Breakdown Over a Week')
+
+# Add legend
+plt.legend(loc='upper left')
+
+# Display the plot
+plt.show()
